@@ -1,21 +1,22 @@
 import React, {Component} from 'react';
 
 class Preference extends Component {
-  state = {
-    languages: [],
-    timezone: [],
-    currency: [],
 
-    selectedLanguage: undefined,
-    selectedTimezone: undefined,
-    selectedCurrency: undefined,
-    visibility: 'public',
-    message: 'follow',
-    categoryList: 'enable'
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      languages: [],
+      timezone: [],
+      currency: [],
 
-  constructor() {
-    super();
+      selectedLanguage: undefined,
+      selectedTimezone: undefined,
+      selectedCurrency: undefined,
+      visibility: 'public',
+      message: 'follow',
+      categoryList: 'enable'
+    };
+
     this.languageSelect = this.languageSelect.bind(this);
     this.timezoneSelect = this.timezoneSelect.bind(this);
     this.currencySelect = this.currencySelect.bind(this);

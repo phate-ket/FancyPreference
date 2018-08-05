@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <nav className="navbar fixed-top navbar-light bg-light navbar-expand-lg justify-content-between">
@@ -26,7 +30,7 @@ class Navbar extends Component {
                   <a className="dropdown-item" href="#">Profile</a>
                   <a className="dropdown-item" href="#">Setting</a>
                   <div className="dropdown-divider"/>
-                  <a className="dropdown-item" href="#">Logout</a>
+                  <a className="dropdown-item" href="#" onClick={this.props.logout}>Logout</a>
                 </div>
               </li>
             </ul>

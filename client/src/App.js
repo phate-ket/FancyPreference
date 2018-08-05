@@ -5,18 +5,18 @@ import Preference from './components/preferences'
 import Navbar from './components/navbar'
 
 class App extends Component {
-  state = {users: []}
+  state = {user: ''}
 
   componentDidMount() {
     fetch('/users')
       .then(res => res.json())
-      .then(users => this.setState({users}));
+      .then(user => this.setState({user}));
   }
 
   render() {
     return (
       <div className="container">
-        <Navbar/>
+        <Navbar user={this.state.user}/>
         {/*<header className="App-header">*/}
           {/*<img src={logo} className="App-logo" alt="logo"/>*/}
           {/*<h1 className="App-title">Welcome to React</h1>*/}
@@ -28,7 +28,7 @@ class App extends Component {
           {/*<div key={user.id}>{user.username}</div>*/}
         {/*)}*/}
         <div className="content">
-          <Preference/>
+          <Preference user={this.state.user}/>
         </div>
       </div>
     );

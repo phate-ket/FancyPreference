@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
 class Navbar extends Component {
-
   render() {
     return (
       <nav className="navbar fixed-top navbar-light bg-light navbar-expand-lg justify-content-between">
@@ -23,9 +22,10 @@ class Navbar extends Component {
                   <i className="fas fa-user"/><span>  You</span>
                 </a>
                 <div className="dropdown-menu dropdown-menu-right" aria-labelledby="user-dd">
+                  <h6 className="dropdown-header">{((this.props.user && this.props.user.username) ? this.props.user.username:'Anonymous')}</h6>
                   <a className="dropdown-item" href="#">Profile</a>
                   <a className="dropdown-item" href="#">Setting</a>
-                  <div className="dropdown-divider"></div>
+                  <div className="dropdown-divider"/>
                   <a className="dropdown-item" href="#">Logout</a>
                 </div>
               </li>

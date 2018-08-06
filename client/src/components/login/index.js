@@ -50,13 +50,17 @@ class Login extends Component {
         <div className="modal-item" style={styles.frontModal}>
           <div className="card">
             <div className="card-body">
-              <h5 className="card-title">Login</h5>
-              <input type="text" placeholder="username" className="form-control" id="username" onChange={this.onUserType}/>
-              <div className="alert alert-danger" role="alert" style={styles.alert}>
-                {errorMessage}
-              </div>
-              <input className="btn btn-outline-primary w-50" type="button" value="Login" onClick={() => this.props.login(this.state.username)}/>
-              <input className="btn btn-outline-secondary w-50" type="button" value="Register" onClick={() => this.props.signup(this.state.username)}/>
+              <form onSubmit={() => this.props.login(this.state.username)}>
+                <h5 className="card-title">Login</h5>
+                <input type="text" placeholder="username" className="form-control" id="username"
+                       onChange={this.onUserType}/>
+                <div className="alert alert-danger" role="alert" style={styles.alert}>
+                  {errorMessage}
+                </div>
+                <button className="btn btn-outline-primary w-50" type="submit" value="Login">Login</button>
+                <input className="btn btn-outline-secondary w-50" type="button" value="Register"
+                       onClick={() => this.props.signup(this.state.username)}/>
+              </form>
             </div>
           </div>
         </div>

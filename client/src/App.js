@@ -26,6 +26,7 @@ class App extends Component {
     fetch('/users/' + username)
       .then(res => res.json())
       .then(user => {
+        if (user) {
           this.setState({
             user: user,
             modalShow: false,
@@ -33,12 +34,17 @@ class App extends Component {
           });
 
           cookies.set('user', user)
+        } else {
+          this.setState({
+            errorShow: true,
+            errorMessage: 'not found'
+          })
         }
-      );
+      });
   }
 
   signup(username) {
-    if(username.trim()) {
+    if (username.trim()) {
       fetch('/users/new/' + username)
         .then(res => res.json())
         .then(user => {
@@ -71,7 +77,7 @@ class App extends Component {
 
   componentDidMount() {
     let user = cookies.get('user');
-    if(user && user.username) {
+    if (user && user.username) {
       this.setState({
         user: user,
         modalShow: false,
@@ -83,7 +89,8 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <Login show={this.state.modalShow} error={this.state.errorShow} errorMessage={this.state.errorMessage} login={this.login} signup={this.signup}/>
+        <Login show={this.state.modalShow} error={this.state.errorShow} errorMessage={this.state.errorMessage}
+               login={this.login} signup={this.signup}/>
         <Navbar user={this.state.user} logout={this.logout}/>
         <div className="content">
           <Preference user={this.state.user} logout={this.logout}/>

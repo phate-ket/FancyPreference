@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 
-/* GET users listing. */
 router.get('/:username', function (req, res, next) {
   // res.send('respond with a resource');
   MongoClient.connect('mongodb+srv://user:P4ssword@cluster0-avio8.gcp.mongodb.net/test?retryWrites=true', {useNewUrlParser: true}, function (err, client) {

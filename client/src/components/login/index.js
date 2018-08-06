@@ -51,7 +51,7 @@ class Login extends Component {
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">Login</h5>
-              <input type="text" placeholder="username" className="form-control" id="username" onChange={this.onUserType}/><br/>
+              <input type="text" placeholder="username" className="form-control" id="username" onChange={this.onUserType}/>
               <div className="alert alert-danger" role="alert" style={styles.alert}>
                 {errorMessage}
               </div>

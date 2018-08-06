@@ -9,9 +9,9 @@ class Preference extends Component {
       timezone: [],
       currency: [],
 
-      selectedLanguage: undefined,
-      selectedTimezone: undefined,
-      selectedCurrency: undefined,
+      selectedLanguage: 'eng',
+      selectedTimezone: 0,
+      selectedCurrency: 'usd',
       visibility: 'public',
       message: 'follow',
       categoryList: 'enable'
@@ -72,7 +72,10 @@ class Preference extends Component {
         categoryList: this.state.categoryList
       })
     }).then(res => res.json())
-      .then(CommandResult =>alert('ok: ' + CommandResult.ok))
+      .then(CommandResult => {
+        console.log("save preferences ok: " + CommandResult.ok);
+        this.props.logout()
+      })
   };
 
   componentDidMount() {

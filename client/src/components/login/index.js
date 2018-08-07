@@ -1,15 +1,22 @@
 import React, {Component} from 'react';
 
 class Login extends Component {
-  state = {username: ''};
 
   constructor(props) {
     super(props);
-    this.onUserType = this.onUserType.bind(this)
+    this.state = {username: ''};
+    this.onUserType = this.onUserType.bind(this);
+    this._handleKeyPress = this._handleKeyPress.bind(this)
   }
 
   onUserType(event) {
     this.setState({username: event.target.value})
+  }
+
+  _handleKeyPress (e) {
+    if (e.key === 'Enter') {
+      this.props.login(this.state.username)
+    }
   }
 
   render() {
@@ -50,17 +57,16 @@ class Login extends Component {
         <div className="modal-item" style={styles.frontModal}>
           <div className="card">
             <div className="card-body">
-              <form onSubmit={() => this.props.login(this.state.username)}>
                 <h5 className="card-title">Login</h5>
                 <input type="text" placeholder="username" className="form-control" id="username"
-                       onChange={this.onUserType}/>
+                       onChange={this.onUserType} onKeyPress={this._handleKeyPress}/>
                 <div className="alert alert-danger" role="alert" style={styles.alert}>
                   {errorMessage}
                 </div>
-                <button className="btn btn-outline-primary w-50" type="submit" value="Login">Login</button>
+                <input className="btn btn-outline-primary w-50" type="button" value="Login"
+                onClick={() => this.props.login(this.state.username)}/>
                 <input className="btn btn-outline-secondary w-50" type="button" value="Register"
                        onClick={() => this.props.signup(this.state.username)}/>
-              </form>
             </div>
           </div>
         </div>
